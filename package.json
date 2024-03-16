@@ -1,0 +1,29 @@
+{
+  "name": "backend-asma",
+  "version": "1.0.0",
+  "description": "- This is the Dev-Branch to do the development and then we will merge this in the test branch to avoid the conflicts and then at last we will going to merge it into the main or master branch.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wajahatabbas27/Backend-ASMA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wajahatabbas27/Backend-ASMA/issues"
+  },
+  "homepage": "https://github.com/wajahatabbas27/Backend-ASMA#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "config": "^3.3.11",
+    "express": "^4.18.3",
+    "express-validator": "^7.0.1",
+    "mongoose": "^8.2.2"
+  }
+}
