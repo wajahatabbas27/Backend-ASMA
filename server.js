@@ -16,9 +16,9 @@ app.get("/", (req, res) => {
   res.status(200).json({ msg: "This is ASMA" });
 });
 
-// app.use("/api/auth", require("./routes/auth"));
-// app.use("/api/users", require("./routes/users"));
-// app.use("/api/posts", require("./routes/posts"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/posts", require("./routes/posts"));
 
 app.listen(PORT, () => {
   console.log(`Server has been started\nhttp:localhost:${PORT}`);

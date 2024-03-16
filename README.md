@@ -26,6 +26,7 @@
 - app.listen ke through port assign kra hai sbse phle jispe hmara server run hoga.
 - app.use(express.json({extended:true})) - isse hm sare data ko apne pass json mein lerhe hote hain - yh aik builtin middlewear function hai express ka express.json.
 - mongoose - yh mongodb ki queries ko run krne ke liye hoga use.
+- jsonwebtoken - it is the token used for the authentication purpose.
 
 ## MongoDB - Setup
 - mongodb UI pe jake login krke cluster create krleinge.
@@ -39,6 +40,9 @@
 ## Routes
 - yh api ke routes ka folder bnaleinge hm aur phr uske andar aik aur folder for that particular api bnaleinge aur phr isse hoga yh ke chezein asani se samajh ajaeingi aur phr hm apni apis bnaleinge.
 - routes>auth/users/posts - yh 3 folders bnalie hain auth ke folder ke andar.
+- route ke folder ke andar jake hm users ki file mein express.router ko use kreinge all the way.
+- Basically jo hmne app.use se jo apne routes bnae hain na server.js file mein wo yhn pe routes folder ke andar jo files hain whn redirect krrhe hote hain aur wahan pe hm express.Router call kreinge aur phr us router pe get/post/update/delete ki apis ko run krleinge hm all the way.
+
 
 ## Database Design
 - database connect krne ke liye mein config mein file bnaounga db.js
