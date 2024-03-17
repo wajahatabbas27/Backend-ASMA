@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://izcloud:Abihawajahat1!@cluster0.zy9plmh.mongodb.net/"
+    "mongoURI": "mongodb+srv://izcloud:Abihawajahat1!@cluster0.zy9plmh.mongodb.net/",
+    "jwtSecret": "asma-12345-jwt-secret"
 }
