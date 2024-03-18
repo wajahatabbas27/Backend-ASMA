@@ -96,6 +96,10 @@
 - jwt.verify se hmare pass payload agya hai jiske andar hmari id hogi payload ki aur jsike though hm token fing krleinge apna aur user ka data.
 - req.header = ("axiom-auth-token") - yh key hai aur value hogi iski hmare pass JWt 
 - yh hm frontend se post request krte we bhejeinge aur iske through hm id nikal leinge aur id ke through hm User ko find krleinge database se.
+- Middlewear bnane ka faida yh hai sbse phle, hmare pass har API mein header mein joke "axiom-auth-token" hai usmein hmare pass jwt token arha hoga aur phr hm usse id middlewear mein nikal kr send krdeinge req.user.id aur phr findById ke method se hm database mein se user ka data nikal ke leaeinge apne pass.
+
+
+
 
 #### Extra Learning:
 - config kaam aise krta hai ke mein aik root pe folder bnaounga config - aur phr uske andar default.json ki file bnaounga aur production.json ki bnaounga aur uske bad jo configuration mein file mein apply krounga wo apply hojaeingi - aur iske andar hm mongo ke secret rkhleinge. - ab jbke meine mongoURI secret save krdia hai to ab meine jahan jahan pe is data ko use krna hoga mein likhounga config.get(mongoURI) - wo data ajaega.
@@ -114,6 +118,11 @@
 - Payload jo hm bnarhe hain user.id se to yh hmara middlewear mein kaam aega jake.
 - Yh jo user ko login aur phr middlewear ko add krne wali jo technique hai hmare pass yh har jagah use hogi hmare pass.
 - Aur yh jo Postman pe hmne APIs bnai hain yh bhi hmare pass use hngi aur hmne jo headers dale hain wo hmare pass hm axios se daleinge frontend pe.
+- git rm -r --cached node_modules
+- git commit -m "Remove node_modules directory from repository"
+- By the help of above these commands I remove the node_modules from the github and added them in gitignore file at local.
+- status-400 -- Bad request ka status hai yh hmare pass.
+- When you set the "Content-Type" header to "application/json" in Postman, you are telling the server that the body of your request or response will be in JSON format. This allows the server to interpret the data correctly and handle it accordingly.
 
 
 

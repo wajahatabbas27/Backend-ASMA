@@ -25,6 +25,7 @@ router.post(
   ],
   async (req, res) => {
     // Yh Errors jo arhe hnge uper checks ko use krne ke bad unko handle kra wa hai hmne yhn pe
+    // Uper checks se jo bhi errors arhe hnge hmare pass wo return krwadeinge hm
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
@@ -46,6 +47,7 @@ router.post(
 
       // Check Password
       // hash password jo hai hmara database mein hai usko hmne decode krna hai phr hm usko match kreinge
+      // bcrypt ka builtin method hai compare ka jisse hm password match krskte hain.
       const isMatched = await bcrypt.compare(password, user.password);
 
       if (!isMatched)

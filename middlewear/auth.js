@@ -6,6 +6,7 @@ const config = require("config");
 
 const auth = (req, res, next) => {
   // yh key hai axiom-auth-token jo ke hmne absolute krdi hai iske through hm JWT ki value ko access krleinge apne pass
+  // yh pora middlewear token pe base krta hai aur yh token hmara iski key axiom-auth-token hai aur yh hm frontend se send krrhe hain
   const token = req.header("axiom-auth-token");
   if (!token)
     return res
