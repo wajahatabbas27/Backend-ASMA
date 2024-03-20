@@ -39,20 +39,32 @@ router.post(
     // req.body mein se hm apna data jo arha hoga wo get krleinge all the way
     const { name, email, password } = req.body;
 
-    // creating a new user and saving in Database
-    // SignUp krrhe hain new user ko hm yhn pe
-    const user = new User({
-      name,
-      email,
-      password,
-    });
-
-    // hash kreinge password ko save krne se phle
-    // salt create kreinge hm
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
-
     try {
+      // User already exists so change the user name & email
+      // Checking the user in the database before signing Up a new user
+      // Checking the user by the findOne method provided by the MongoDB.
+      const userAlreadyExist = await User.findOne({ email }).select({
+        password: 0,
+      });
+      // console.log("Already Exist: ",userAlreadyExist);
+      if (userAlreadyExist)
+        return res.status(400).json({
+          msg: "User with this email already exist change the email to signup",
+        });
+
+      // creating a new user and saving in Database
+      // SignUp krrhe hain new user ko hm yhn pe
+      const user = new User({
+        name,
+        email,
+        password,
+      });
+
+      // hash kreinge password ko save krne se phle
+      // salt create kreinge hm
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+
       //User ko save kreinge database mein
       await user.save();
 
