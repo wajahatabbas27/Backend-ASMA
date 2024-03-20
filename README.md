@@ -55,7 +55,9 @@
 - User Schema mein hmne name,email,password aur date ko add kra hai hmne aur phr model create krdia hai hmne.
 - Post Schema mein hmne user knsa hai jiski post hai wo hmne lia hai mongoose.Schema.Types.ObjectId se lelia hai hmne, aur messag kia hai post ka aur date kia hai, aur phr hmne model create krdia hai iska.
 - Jn files mein hmne models ko use krna hai database mein save krne ke liye data ko us jagah pe hm import krleinge model ko.
-- 
+- MongoDB > Console-Database > Network Access > IP -->> Koi bhi access krskta hai isko kahin se bhi koi dedicated IP nhi ho.
+- Ab iske krne ki waja se koi bhi database ko kahin se bhi access krskta hai.
+- Jo hmara database hai ismein hmne relationship bnaya hai apne pass mtlb ke jo user hoga uski posts hngi hmare pass mtlb ke jo user hoga hmare pass uski posts hngi to hmne usko schema mein relation ke liye define aise kra hai : Mongoose.Schema.Types.ObjectId
 
 ## Apis:
 
@@ -99,6 +101,49 @@
 - Middlewear bnane ka faida yh hai sbse phle, hmare pass har API mein header mein joke "axiom-auth-token" hai usmein hmare pass jwt token arha hoga aur phr hm usse id middlewear mein nikal kr send krdeinge req.user.id aur phr findById ke method se hm database mein se user ka data nikal ke leaeinge apne pass.
 
 
+#### Add Posts API in POST file:
+- Is mein hm post ko add kreinge database mein 
+- post ka schema hai user aur post, date to default hai hmare pass.
+- return bhi hm post ko krwadeinge.
+- Schema mein jo key likhi hai hmne wohi key aur value aegi jhn pe hm use krrhe hnge model
+
+
+#### GET All Posts API in POST file:
+- Is mein hm newsfeed ke liye sari posts ko get krrhe hnge aur return krwa rhe hnge 
+- yh hm Post.find() ke method se krleinge -->> yhn pe post model hai aur find() database ka method hai jiske through hm sari posts ko access krleinge aur hm return krdeinge.
+- Is mein posts sare users ki hain hmne bs sedha find ka method chalaya hai aur usse hm get krleinge sari posts ko apne pass.
+
+
+#### GET All Posts API in POST file of a Particular user:
+- Is mein logic jo lagegi wo sb kuch to same hogi logic lekin uske ilawa hm bs jo technique use kreinge wo bs yh hogi ke hm by id data call krrhe hnge database se
+- uske ilawa hm req.params.userID ke through get krrhe hnge data user ka specifically aur yh hmein user send krega url mein joke params mein se hm get krleinge all the way.
+- Uske ilawa hm Post.find({ user: req.params.userID }) -->> Is technique ke through hm filter krrhe hain aur data get krrhe hain sara all the way.
+- Get All Posts aur Get particular users Posts mein fark hi bas aik userID ka hai jo specific filter hai jiske uper hm specific user ki posts find krrhe hain.
+
+
+#### Update a Post in POST file:
+- Update krienge hm aik particular post ko database mein
+- Frontend se hm data leinge aur us data se hm post ko update krdeinge apne pass all the way.
+- lekin uske liye hm aik empty object bnaeinge aur phr us empty object ko update kreinge hm.
+- Empty object baneinge aur uske ilawa checks lgainge if statement se aur us object mein save krte rheinge jo hmne change krna hai all the way.
+- Object ke through set se hm update krdeinge database mein aur new:true se naya updated data leke ajainge hm database se.
+- aur phr replace krdieinge database mein hm usko.
+- findByIdAndUpdate ka method hai iske through hm apni post ko update krdeinge database mein.
+- { new: true } -->> is attribute ko use krne se database se updated document return krdega hmein.
+- $set : changes -->> set mein wo likheinge jisse hmne update krna hai aur isse hoga yh ke data update hojaega hmare pass.
+- Jo check lgaya hai hmne to hmare pass database se objectID arhi hai aur usko hm change kreinge string mein take uspe check lgalein.
+- toString() - is method se wo string mein change hojaegi hmare pass.
+- Hm return krwadeinge phr updated post ko.
+- Phle post hm call krleinge findById se aur phr hm usi post ko update krdeinge findByIdAndUpdate se usi post ko. 
+
+
+#### Update a Post in POST file:
+- Delete a particular post.
+- jese update ka kra hai wese hi params ki jo Id arhi hogi usko leke delete krdeinge hm.
+- findByIdAndDelete -->> is method ko apply krke bas hm post ko delete krdeinge apne pass se.
+- aur response mein text send krdeinge jo yh btaega post has been deleted.
+
+## Deployment
 
 
 #### Extra Learning:
@@ -123,8 +168,7 @@
 - By the help of above these commands I remove the node_modules from the github and added them in gitignore file at local.
 - status-400 -- Bad request ka status hai yh hmare pass.
 - When you set the "Content-Type" header to "application/json" in Postman, you are telling the server that the body of your request or response will be in JSON format. This allows the server to interpret the data correctly and handle it accordingly.
-
-
+- Post update hochuki hoti hai database mein agr server error bhi arha hai tb bhi - console pe jake hm check kreinge yh.
 
 
 

@@ -43,7 +43,10 @@ router.post(
       // User already exists so change the user name & email
       // Checking the user in the database before signing Up a new user
       // Checking the user by the findOne method provided by the MongoDB.
-      const userAlreadyExist = await User.findOne({ email });
+      const userAlreadyExist = await User.findOne({ email }).select({
+        password: 0,
+      });
+      // console.log("Already Exist: ",userAlreadyExist);
       if (userAlreadyExist)
         return res.status(400).json({
           msg: "User with this email already exist change the email to signup",
