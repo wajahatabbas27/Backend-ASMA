@@ -13,7 +13,8 @@
 - nodemon is a utility for Node.js that helps in the development process by automatically restarting your Node.js application when file changes in the directory are detected. It's particularly useful during development because it saves you from having to manually stop and restart your server every time you make changes to your code.
 - scripts ko package.json mein jake update krdeinge all the way. - "server":"nodemon server.js" -- isko hm terminal mein -- npm run server - ke zariye se run krleinge all the way - ab hoga yh jb bhi kisi file mein koi change hoga to hmein koi masla nhi hoga aur hmein baar baar change nhi krna prega server bnd krke start to nodemon krlega hmare liye yh sb kuch.
 
-
+# Deployed URL to Access to call APIs'
+- Backend-Deployed-URLhttps://asma-backend-bd81c608e357.herokuapp.com/
 
 ### Installation Packages:
 - express - to create the server - npm i express
@@ -55,7 +56,9 @@
 - User Schema mein hmne name,email,password aur date ko add kra hai hmne aur phr model create krdia hai hmne.
 - Post Schema mein hmne user knsa hai jiski post hai wo hmne lia hai mongoose.Schema.Types.ObjectId se lelia hai hmne, aur messag kia hai post ka aur date kia hai, aur phr hmne model create krdia hai iska.
 - Jn files mein hmne models ko use krna hai database mein save krne ke liye data ko us jagah pe hm import krleinge model ko.
-- 
+- MongoDB > Console-Database > Network Access > IP -->> Koi bhi access krskta hai isko kahin se bhi koi dedicated IP nhi ho.
+- Ab iske krne ki waja se koi bhi database ko kahin se bhi access krskta hai.
+- Jo hmara database hai ismein hmne relationship bnaya hai apne pass mtlb ke jo user hoga uski posts hngi hmare pass mtlb ke jo user hoga hmare pass uski posts hngi to hmne usko schema mein relation ke liye define aise kra hai : Mongoose.Schema.Types.ObjectId
 
 ## Apis:
 
@@ -96,6 +99,61 @@
 - jwt.verify se hmare pass payload agya hai jiske andar hmari id hogi payload ki aur jsike though hm token fing krleinge apna aur user ka data.
 - req.header = ("axiom-auth-token") - yh key hai aur value hogi iski hmare pass JWt 
 - yh hm frontend se post request krte we bhejeinge aur iske through hm id nikal leinge aur id ke through hm User ko find krleinge database se.
+- Middlewear bnane ka faida yh hai sbse phle, hmare pass har API mein header mein joke "axiom-auth-token" hai usmein hmare pass jwt token arha hoga aur phr hm usse id middlewear mein nikal kr send krdeinge req.user.id aur phr findById ke method se hm database mein se user ka data nikal ke leaeinge apne pass.
+
+
+#### Add Posts API in POST file:
+- Is mein hm post ko add kreinge database mein 
+- post ka schema hai user aur post, date to default hai hmare pass.
+- return bhi hm post ko krwadeinge.
+- Schema mein jo key likhi hai hmne wohi key aur value aegi jhn pe hm use krrhe hnge model
+
+
+#### GET All Posts API in POST file:
+- Is mein hm newsfeed ke liye sari posts ko get krrhe hnge aur return krwa rhe hnge 
+- yh hm Post.find() ke method se krleinge -->> yhn pe post model hai aur find() database ka method hai jiske through hm sari posts ko access krleinge aur hm return krdeinge.
+- Is mein posts sare users ki hain hmne bs sedha find ka method chalaya hai aur usse hm get krleinge sari posts ko apne pass.
+
+
+#### GET All Posts API in POST file of a Particular user:
+- Is mein logic jo lagegi wo sb kuch to same hogi logic lekin uske ilawa hm bs jo technique use kreinge wo bs yh hogi ke hm by id data call krrhe hnge database se
+- uske ilawa hm req.params.userID ke through get krrhe hnge data user ka specifically aur yh hmein user send krega url mein joke params mein se hm get krleinge all the way.
+- Uske ilawa hm Post.find({ user: req.params.userID }) -->> Is technique ke through hm filter krrhe hain aur data get krrhe hain sara all the way.
+- Get All Posts aur Get particular users Posts mein fark hi bas aik userID ka hai jo specific filter hai jiske uper hm specific user ki posts find krrhe hain.
+
+
+#### Update a Post in POST file:
+- Update krienge hm aik particular post ko database mein
+- Frontend se hm data leinge aur us data se hm post ko update krdeinge apne pass all the way.
+- lekin uske liye hm aik empty object bnaeinge aur phr us empty object ko update kreinge hm.
+- Empty object baneinge aur uske ilawa checks lgainge if statement se aur us object mein save krte rheinge jo hmne change krna hai all the way.
+- Object ke through set se hm update krdeinge database mein aur new:true se naya updated data leke ajainge hm database se.
+- aur phr replace krdieinge database mein hm usko.
+- findByIdAndUpdate ka method hai iske through hm apni post ko update krdeinge database mein.
+- { new: true } -->> is attribute ko use krne se database se updated document return krdega hmein.
+- $set : changes -->> set mein wo likheinge jisse hmne update krna hai aur isse hoga yh ke data update hojaega hmare pass.
+- Jo check lgaya hai hmne to hmare pass database se objectID arhi hai aur usko hm change kreinge string mein take uspe check lgalein.
+- toString() - is method se wo string mein change hojaegi hmare pass.
+- Hm return krwadeinge phr updated post ko.
+- Phle post hm call krleinge findById se aur phr hm usi post ko update krdeinge findByIdAndUpdate se usi post ko. 
+
+
+#### Update a Post in POST file:
+- Delete a particular post.
+- jese update ka kra hai wese hi params ki jo Id arhi hogi usko leke delete krdeinge hm.
+- findByIdAndDelete -->> is method ko apply krke bas hm post ko delete krdeinge apne pass se.
+- aur response mein text send krdeinge jo yh btaega post has been deleted.
+
+
+## Deployment on Heruku
+- Heruku is a cloud application platform.
+- Heruku pe apna account bnaleinge aur phr hm apis ko deploy krienge to create the endpoint.
+- 1-Create new app pe click kreinge
+- 2-App ka naam likheinge hm
+- 3-heruku console > setting > buildpack (nodejs) - Buildpack ko nodejs krdeinge kionke yh aik nodejs application hai
+- 4- deploy pe aake > connect to github krleineg - repo search kreleinge
+- 5- deploy pe click krdeinge to deploy hojaegi application
+
 
 #### Extra Learning:
 - config kaam aise krta hai ke mein aik root pe folder bnaounga config - aur phr uske andar default.json ki file bnaounga aur production.json ki bnaounga aur uske bad jo configuration mein file mein apply krounga wo apply hojaeingi - aur iske andar hm mongo ke secret rkhleinge. - ab jbke meine mongoURI secret save krdia hai to ab meine jahan jahan pe is data ko use krna hoga mein likhounga config.get(mongoURI) - wo data ajaega.
@@ -114,9 +172,13 @@
 - Payload jo hm bnarhe hain user.id se to yh hmara middlewear mein kaam aega jake.
 - Yh jo user ko login aur phr middlewear ko add krne wali jo technique hai hmare pass yh har jagah use hogi hmare pass.
 - Aur yh jo Postman pe hmne APIs bnai hain yh bhi hmare pass use hngi aur hmne jo headers dale hain wo hmare pass hm axios se daleinge frontend pe.
-
-
-
+- git rm -r --cached node_modules
+- git commit -m "Remove node_modules directory from repository"
+- By the help of above these commands I remove the node_modules from the github and added them in gitignore file at local.
+- status-400 -- Bad request ka status hai yh hmare pass.
+- When you set the "Content-Type" header to "application/json" in Postman, you are telling the server that the body of your request or response will be in JSON format. This allows the server to interpret the data correctly and handle it accordingly.
+- Post update hochuki hoti hai database mein agr server error bhi arha hai tb bhi - console pe jake hm check kreinge yh.
+- Backend ko alag deploy kreinge hm aur frontend ko alag deploy kreinge hm.
 
 
 
