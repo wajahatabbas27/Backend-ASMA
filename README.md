@@ -13,7 +13,8 @@
 - nodemon is a utility for Node.js that helps in the development process by automatically restarting your Node.js application when file changes in the directory are detected. It's particularly useful during development because it saves you from having to manually stop and restart your server every time you make changes to your code.
 - scripts ko package.json mein jake update krdeinge all the way. - "server":"nodemon server.js" -- isko hm terminal mein -- npm run server - ke zariye se run krleinge all the way - ab hoga yh jb bhi kisi file mein koi change hoga to hmein koi masla nhi hoga aur hmein baar baar change nhi krna prega server bnd krke start to nodemon krlega hmare liye yh sb kuch.
 
-
+# Deployed URL to Access to call APIs'
+- Backend-Deployed-URLhttps://asma-backend-bd81c608e357.herokuapp.com/
 
 ### Installation Packages:
 - express - to create the server - npm i express
@@ -143,7 +144,14 @@
 - findByIdAndDelete -->> is method ko apply krke bas hm post ko delete krdeinge apne pass se.
 - aur response mein text send krdeinge jo yh btaega post has been deleted.
 
-## Deployment
+
+## Deployment on Heruku
+- Heruku is a cloud application platform.
+- Heruku pe apna account bnaleinge aur phr hm apis ko deploy krienge to create the endpoint.
+- 1-Create new app pe click kreinge
+- 2-App ka naam likheinge hm
+- 3-heruku console > setting > buildpack (nodejs) - Buildpack ko nodejs krdeinge kionke yh aik nodejs application hai
+- 4- deploy pe aake > connect to github krleineg - repo search krelineg
 
 
 #### Extra Learning:
@@ -169,7 +177,7 @@
 - status-400 -- Bad request ka status hai yh hmare pass.
 - When you set the "Content-Type" header to "application/json" in Postman, you are telling the server that the body of your request or response will be in JSON format. This allows the server to interpret the data correctly and handle it accordingly.
 - Post update hochuki hoti hai database mein agr server error bhi arha hai tb bhi - console pe jake hm check kreinge yh.
-
+- Backend ko alag deploy kreinge hm aur frontend ko alag deploy kreinge hm.
 
 
 
