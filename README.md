@@ -151,7 +151,8 @@
 - 1-Create new app pe click kreinge
 - 2-App ka naam likheinge hm
 - 3-heruku console > setting > buildpack (nodejs) - Buildpack ko nodejs krdeinge kionke yh aik nodejs application hai
-- 4- deploy pe aake > connect to github krleineg - repo search krelineg
+- 4- deploy pe aake > connect to github krleineg - repo search kreleinge
+- 5- deploy pe click krdeinge to deploy hojaegi application
 
 
 #### Extra Learning:
